@@ -106,15 +106,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.1
     agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentSlope: 60
+    agentClimb: 2
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
-    minRegionArea: 2
+    minRegionArea: 0
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.033333335
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -122,21 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
---- !u!64 &96382106
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019806921567044547}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6826036904830390072, guid: ed36fd62e78a14e16afbfa181591a431, type: 3}
+  m_NavMeshData: {fileID: 23800000, guid: ca5314361c8f84f70bdb866bdbc3fc72, type: 2}
 --- !u!1001 &185582639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -624,13 +610,13 @@ GameObject:
   - component: {fileID: 1440134204394151469}
   - component: {fileID: 5747498032400190028}
   - component: {fileID: 5744844185748878897}
-  - component: {fileID: 96382106}
+  - component: {fileID: 5747498032400190029}
   m_Layer: 0
   m_Name: floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!33 &3126295854307583485
 MeshFilter:
@@ -874,6 +860,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019806921567044547}
   m_Mesh: {fileID: -6826036904830390072, guid: ed36fd62e78a14e16afbfa181591a431, type: 3}
+--- !u!65 &5747498032400190029
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019806921567044547}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.50000006, y: 0.013313235, z: 0.50000006}
+  m_Center: {x: 0, y: -0.00039786653, z: 0}
 --- !u!33 &5878584953197780098
 MeshFilter:
   m_ObjectHideFlags: 0
