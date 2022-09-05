@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private int playerHealth;
+    public int keysCollected;
+
     private float moveSpeed;
     [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
@@ -37,11 +40,10 @@ public class PlayerController : MonoBehaviour
         Move();
         Rotatee();
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Attack();
         }
-
         
     }
 
@@ -53,7 +55,6 @@ public class PlayerController : MonoBehaviour
         moveDirection = new Vector3(0, 0, moveZ);
         moveDirection = transform.TransformDirection(moveDirection);
         moveDirection *= walkSpeed;
-
 
         if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift))
         {
@@ -67,6 +68,7 @@ public class PlayerController : MonoBehaviour
         {
             Idle();
         }
+        
 
         moveDirection *= moveSpeed;
 
@@ -91,6 +93,7 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("Speed", 0.5f);
     }
 
+
     private void Rotatee()
     {
         if (Input.GetAxisRaw("Horizontal") > 0)
@@ -106,7 +109,7 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        // Attack
+        anim.SetTrigger("Attack");
     }
 
 }
