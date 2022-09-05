@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveDirection;
     private Animator anim;
 
+    Vector3 fallVector;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        fallVector = Vector3.zero;
+
+        if (controller.isGrounded == false)
+        {
+            fallVector += Physics.gravity;
+        }
+
+        controller.Move(fallVector * Time.deltaTime);
+
         Move();
         Rotatee();
 
@@ -30,6 +41,8 @@ public class PlayerController : MonoBehaviour
         {
             Attack();
         }
+
+        
     }
 
     private void Move()
@@ -95,4 +108,5 @@ public class PlayerController : MonoBehaviour
     {
         // Attack
     }
+
 }
