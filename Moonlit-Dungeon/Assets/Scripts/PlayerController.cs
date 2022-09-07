@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private int playerHealth;
+    public int playerHealth;
     public int keysCollected;
 
     private float moveSpeed;
@@ -18,9 +18,11 @@ public class PlayerController : MonoBehaviour
 
     Vector3 fallVector;
 
+
     // Start is called before the first frame update
     void Start()
     {
+        playerHealth = 2000;
         controller = GetComponent<CharacterController>();
         anim = GetComponentInChildren<Animator>();
     }
@@ -43,6 +45,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Attack();
+        }
+
+        if (playerHealth <= 0)
+        {
+            Debug.Log("Dead");
         }
         
     }
@@ -78,19 +85,19 @@ public class PlayerController : MonoBehaviour
 
     private void Idle()
     {
-        anim.SetFloat("Speed", 0);
+        anim.SetFloat("Speed", 0, 0.05f, Time.deltaTime);
     }
 
     private void Run()
     {
         moveSpeed = runSpeed;
-        anim.SetFloat("Speed", 1);
+        anim.SetFloat("Speed", 1, 0.05f, Time.deltaTime);
     }
 
     private void Walk()
     {
         moveSpeed = walkSpeed;
-        anim.SetFloat("Speed", 0.5f);
+        anim.SetFloat("Speed", 0.5f, 0.05f, Time.deltaTime);
     }
 
 
@@ -111,5 +118,4 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetTrigger("Attack");
     }
-
 }

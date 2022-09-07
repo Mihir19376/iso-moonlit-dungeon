@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4167993, g: 0.44434196, b: 0.4598015, a: 1}
+  m_IndirectSpecularColor: {r: 0.41679975, g: 0.44434214, b: 0.45980197, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -241,25 +241,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9910c4199d347fc4fa006fc7603532b7, type: 3}
   m_PrefabInstance: {fileID: 524762673}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &148233333 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1557458575403366, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
-  m_PrefabInstance: {fileID: 855650693}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &148233336
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 148233333}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ccf6810f56ac7b34b9cd17ada01cbda1, type: 3}
 --- !u!1001 &177641356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1323,7 +1304,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1462720695320296, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
       propertyPath: m_Name
-      value: Polygonal Metalon Purple
+      value: Spider 01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462720695320296, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
+      propertyPath: m_TagString
+      value: SpiderTag
       objectReference: {fileID: 0}
     - target: {fileID: 4673369876368086, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
       propertyPath: m_RootOrder
@@ -1331,15 +1316,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4673369876368086, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4673369876368086, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4673369876368086, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4673369876368086, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1430,7 +1415,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f76cdd10bb7f64167b3999bac6851c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spiderHealth: 0
   playerTransform: {fileID: 1858924930}
+  player: {fileID: 1858924927}
+--- !u!65 &855650699
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855650694}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.042122, y: 1.5970732, z: 3.1370888}
+  m_Center: {x: 0, y: 0.9588059, z: -0.026422292}
 --- !u!1001 &930382936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2762,6 +2762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcead61287f6f45318a25e2ac02aede5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: 0
   keysCollected: 0
   walkSpeed: 1.5
   runSpeed: 4
