@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private bool attacking;
     public int playerHealth;
     public int keysCollected;
 
@@ -18,10 +19,13 @@ public class PlayerController : MonoBehaviour
 
     Vector3 fallVector;
 
+    SpiderController spiderController;
 
     // Start is called before the first frame update
     void Start()
     {
+        keysCollected = 0;
+        attacking = false;
         playerHealth = 2000;
         controller = GetComponent<CharacterController>();
         anim = GetComponentInChildren<Animator>();
@@ -44,7 +48,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Attack();
+            //Attack();
+            StartCoroutine(Attack());
         }
 
         if (playerHealth <= 0)
@@ -114,8 +119,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Attack()
+    //private void Attack()
+    //{
+    //    anim.SetTrigger("Attack");
+    //}
+
+    IEnumerator Attack()
     {
+        attacking = true;
         anim.SetTrigger("Attack");
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        attacking = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (attacking == true)
+        {
+            if (collision.gameObject.tag == "SpiderTag")
+            {
+                spiderController = collision.gameObject.GetComponent<SpiderController>();
+                spiderController.TakeDamage();
+            }
+        }
+    }
+
+    public void addKey()
+    {
+        keysCollected++;
     }
 }

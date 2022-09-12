@@ -16,6 +16,9 @@ public class SpiderController : MonoBehaviour
     PlayerController playerController;
     public GameObject player;
 
+    private float distanceToPlayer;
+    private bool idle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,14 +31,37 @@ public class SpiderController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        FollowPlayer();
-        if (!spiderNavMeshAgent.pathPending)
+        if (spiderHealth <= 0)
         {
-            if (spiderNavMeshAgent.remainingDistance <= spiderNavMeshAgent.stoppingDistance)
+            Debug.Log("This Enemy has Died");
+            playerController.addKey();
+            spiderAnim.Play("Die");
+        }
+        else
+        {
+            distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+            if (distanceToPlayer <= 3)
             {
-                if (!spiderNavMeshAgent.hasPath || spiderNavMeshAgent.velocity.sqrMagnitude == 0f)
+                spiderNavMeshAgent.isStopped = false;
+                idle = false;
+                FollowPlayer();
+            }
+            else
+            {
+                spiderNavMeshAgent.isStopped = true;
+                idle = true;
+                spiderAnim.SetFloat("Speed", 0, 0.05f, Time.deltaTime);
+            }
+
+
+            if (!spiderNavMeshAgent.pathPending && idle == false)
+            {
+                if (spiderNavMeshAgent.remainingDistance <= spiderNavMeshAgent.stoppingDistance)
                 {
-                    Attack();
+                    if (!spiderNavMeshAgent.hasPath || spiderNavMeshAgent.velocity.sqrMagnitude == 0f)
+                    {
+                        Attack();
+                    }
                 }
             }
         }
@@ -60,5 +86,10 @@ public class SpiderController : MonoBehaviour
     {
         spiderAnim.SetTrigger("Attack");
         playerController.playerHealth -= 1;
+    }
+
+    public void TakeDamage()
+    {
+        spiderHealth -= 1;
     }
 }
