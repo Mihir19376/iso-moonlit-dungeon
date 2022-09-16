@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //DontDestroyOnLoad(gameObject);
         keysCollected = 0;
         attacking = false;
         playerHealth = 2000;
@@ -34,6 +36,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.J))
+        //{
+        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        //}
+
         fallVector = Vector3.zero;
 
         if (controller.isGrounded == false)
@@ -54,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
         if (playerHealth <= 0)
         {
-            Debug.Log("Dead");
+            // Debug.Log("Dead");
         }
         
     }
