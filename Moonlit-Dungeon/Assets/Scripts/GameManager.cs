@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     public GameObject spider;
     public int spiderEnemiesLeft;
 
+    public GameObject wizard;
+    public int wizardEnemiesLeft;
+
     // level 1, 2, 3, and 4
     public int level;
     // "On the way to Boss" = 1, "Boss" = 2, "Back from Boss" = 3
@@ -44,9 +47,14 @@ public class GameManager : MonoBehaviour
                 }
                 isGenerated = true;
             }
-            else if (level == 2)
+            else if (level == 2 && !isGenerated)
             {
                 // Instantiate 4 Wizards.
+                for (int y = 0; y < wizardEnemiesLeft; ++y)
+                {
+                    Instantiate(wizard, new Vector3(0, 0, 0), Quaternion.identity);
+                }
+                isGenerated = true;
             }
             else if (level == 3)
             {
