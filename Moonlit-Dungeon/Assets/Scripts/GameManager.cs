@@ -5,17 +5,18 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject spider;
-    public int spiderEnemiesLeft = 4;
+    public int spiderEnemiesLeft;
 
     // level 1, 2, 3, and 4
     public int level;
-    // "On the way to Boss" = 1, "Boss" = 2, "Baack from Boss" = 3
+    // "On the way to Boss" = 1, "Boss" = 2, "Back from Boss" = 3
     public int stage;
     public bool isGenerated = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        spiderEnemiesLeft = 4;
         level = 1;
         stage = 1;
     }
@@ -23,6 +24,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (level > 4)
+        {
+            stage = 2;
+        }
         enemyGenrator();
     }
 

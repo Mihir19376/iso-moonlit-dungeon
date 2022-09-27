@@ -28,10 +28,13 @@ public class SpiderController : MonoBehaviour
     // A boolean that states if this enemy is idle or not, and will play the according animations
     private bool idle;
 
+    private bool dead;
+
     // Start is called before the first frame update
     // Anything set here is set once at the start of the game
     void Start()
     {
+        dead = false;
         player = GameObject.FindGameObjectWithTag("PlayerTag");
         playerTransform = GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<Transform>();
         // Set the health of the spider to 10
@@ -48,7 +51,7 @@ public class SpiderController : MonoBehaviour
     void Update()
     {
         // check if the health variable is equivilant or less than 0, and if so carry out the following:
-        if (spiderHealth <= 0)
+        if (spiderHealth <= 0 && dead == false)
         {
             //// print that the enemy has died in the debug termianl in Unity
             //Debug.Log("This Enemy has Died");
@@ -59,6 +62,7 @@ public class SpiderController : MonoBehaviour
             //spiderAnim.Play("Die");
             //gameObject.SetActive(false);
             StartCoroutine(dealPlayerDamage());
+            dead = true;
         }
         else
         {
@@ -83,7 +87,8 @@ public class SpiderController : MonoBehaviour
                 {
                     if (!spiderNavMeshAgent.hasPath || spiderNavMeshAgent.velocity.sqrMagnitude == 0f)
                     {
-                        Attack();
+                        StartCoroutine(Attack());
+                        //Attack();
                     }
                 }
             }
@@ -105,9 +110,10 @@ public class SpiderController : MonoBehaviour
         oldPos = transform.position;
     }
 
-    private void Attack()
+    IEnumerator Attack()
     {
         spiderAnim.SetTrigger("Attack");
+        yield return new WaitForSeconds(0.5f);
         playerController.playerHealth -= 1;
     }
 

@@ -14,27 +14,20 @@ public class DoorController : MonoBehaviour
         playerController = GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<PlayerController>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "PlayerTag")
+        if (other.gameObject.tag == "PlayerTag")
         {
             checkIfPlayerHasEnoughKeys();
         }
-
-        Debug.Log(collision.gameObject.tag);
     }
+
 
     public void checkIfPlayerHasEnoughKeys()
     {
         if (playerController.keysCollected >= 4)
         {
-            player.transform.position = new Vector3(0, 0, 0);
             Debug.Log("Next Level!");
         }
     }

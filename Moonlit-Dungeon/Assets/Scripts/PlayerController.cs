@@ -36,15 +36,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.K))
-        //{
-        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.J))
-        //{
-        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        //}
 
         fallVector = Vector3.zero;
 
@@ -131,10 +122,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //private void Attack()
-    //{
-    //    anim.SetTrigger("Attack");
-    //}
 
     IEnumerator Attack()
     {
