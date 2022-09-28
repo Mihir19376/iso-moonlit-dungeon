@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.41679975, g: 0.44434214, b: 0.45980197, a: 1}
+  m_IndirectSpecularColor: {r: 0.4167993, g: 0.44434196, b: 0.4598015, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2368,6 +2368,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spider: {fileID: 2728042776273041485, guid: 23f4890e7c7a449f7907148dbc75075c, type: 3}
   spiderEnemiesLeft: 4
+  wizard: {fileID: 0}
+  wizardEnemiesLeft: 0
   level: 0
   stage: 0
   isGenerated: 0
