@@ -30,10 +30,13 @@ public class SpiderController : MonoBehaviour
 
     private bool dead;
 
+    GameManager gameManager;
+
     // Start is called before the first frame update
     // Anything set here is set once at the start of the game
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManagerTag").GetComponent<GameManager>();
         dead = false;
         player = GameObject.FindGameObjectWithTag("PlayerTag");
         playerTransform = GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<Transform>();
@@ -62,6 +65,7 @@ public class SpiderController : MonoBehaviour
             //spiderAnim.Play("Die");
             //gameObject.SetActive(false);
             StartCoroutine(dealPlayerDamage());
+            gameManager.spiderEnemiesLeft -= 1;
             dead = true;
         }
         else

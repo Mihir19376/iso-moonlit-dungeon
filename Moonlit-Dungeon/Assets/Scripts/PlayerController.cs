@@ -21,11 +21,12 @@ public class PlayerController : MonoBehaviour
     Vector3 fallVector;
 
     SpiderController spiderController;
+    WizardController wizardController;
+    GuardController guardController;
 
     // Start is called before the first frame update
     void Start()
     {
-        //DontDestroyOnLoad(gameObject);
         keysCollected = 0;
         attacking = false;
         playerHealth = 2000;
@@ -139,6 +140,16 @@ public class PlayerController : MonoBehaviour
             {
                 spiderController = collision.gameObject.GetComponent<SpiderController>();
                 spiderController.TakeDamage();
+            }
+            if (collision.gameObject.tag == "WizardTag")
+            {
+                wizardController = collision.gameObject.GetComponent<WizardController>();
+                wizardController.TakeDamage();
+            }
+            if (collision.gameObject.tag == "GuardTag")
+            {
+                guardController = collision.gameObject.GetComponent<GuardController>();
+                guardController.TakeDamage();
             }
         }
     }

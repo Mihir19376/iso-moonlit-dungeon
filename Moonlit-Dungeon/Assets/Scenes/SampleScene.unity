@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4167993, g: 0.44434196, b: 0.4598015, a: 1}
+  m_IndirectSpecularColor: {r: 0.41679975, g: 0.44434214, b: 0.45980197, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2349,7 +2349,7 @@ GameObject:
   - component: {fileID: 1537448691}
   m_Layer: 0
   m_Name: Game Manager
-  m_TagString: Untagged
+  m_TagString: GameManagerTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2368,11 +2368,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spider: {fileID: 2728042776273041485, guid: 23f4890e7c7a449f7907148dbc75075c, type: 3}
   spiderEnemiesLeft: 4
-  wizard: {fileID: 0}
-  wizardEnemiesLeft: 0
+  wizard: {fileID: 7806206503480690541, guid: e33f8f655ad324a6eba055b54616aac9, type: 3}
+  wizardEnemiesLeft: 4
+  guard: {fileID: 8571502827965248526, guid: 50dd1e15e9cb04219b7a3d79f7304b2b, type: 3}
+  guardEnemiesLeft: 0
   level: 0
   stage: 0
   isGenerated: 0
+  bossDefeated: 0
 --- !u!4 &1537448692
 Transform:
   m_ObjectHideFlags: 0

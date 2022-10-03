@@ -6,6 +6,9 @@ TagManager:
   tags:
   - PlayerTag
   - SpiderTag
+  - GameManagerTag
+  - WizardTag
+  - GuardTag
   layers:
   - Default
   - TransparentFX
