@@ -9,6 +9,7 @@ TagManager:
   - GameManagerTag
   - WizardTag
   - GuardTag
+  - BossTag
   layers:
   - Default
   - TransparentFX

@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     private bool attacking;
-    public int playerHealth;
+    public float playerMaxHealth = 2000;
+    public float playerHealth;
     public int keysCollected;
+    public bool hasTreasure;
 
     private float moveSpeed;
     [SerializeField] private float walkSpeed;
@@ -23,13 +25,15 @@ public class PlayerController : MonoBehaviour
     SpiderController spiderController;
     WizardController wizardController;
     GuardController guardController;
+    BossController bossController;
 
     // Start is called before the first frame update
     void Start()
     {
+        hasTreasure = false;
         keysCollected = 0;
         attacking = false;
-        playerHealth = 2000;
+        playerHealth = playerMaxHealth;
         controller = GetComponent<CharacterController>();
         anim = GetComponentInChildren<Animator>();
     }
@@ -150,6 +154,11 @@ public class PlayerController : MonoBehaviour
             {
                 guardController = collision.gameObject.GetComponent<GuardController>();
                 guardController.TakeDamage();
+            }
+            if (collision.gameObject.tag == "BossTag")
+            {
+                bossController = collision.gameObject.GetComponent<BossController>();
+                bossController.TakeDamage();
             }
         }
     }
