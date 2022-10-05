@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public DoorController doorController;
+    public KeyBarController keyBarController;
+
     public GameObject spider;
     public int spiderEnemiesLeft;
 
@@ -50,6 +53,7 @@ public class GameManager : MonoBehaviour
         }
         if (bossDefeated)
         {
+            doorController.levelChanger = -1;
             stage = 3;
         }
         enemyGenrator();
@@ -61,6 +65,9 @@ public class GameManager : MonoBehaviour
         {
             if (level == 1 && !isGenerated)
             {
+                // make the required number of keys 2
+                doorController.requiredKeys = 2;
+                keyBarController.locks = spiderEnemiesLeft;
                 // Instantiate 4 Spiders.
                 for (int y = 0; y < spiderEnemiesLeft; ++y)
                 {
@@ -70,6 +77,9 @@ public class GameManager : MonoBehaviour
             }
             else if (level == 2 && !isGenerated)
             {
+                // make the required number of keys 2
+                doorController.requiredKeys = 2;
+                keyBarController.locks = wizardEnemiesLeft;
                 // count and delete all the spiders.
                 spiderEnemiesLeft = GameObject.FindGameObjectsWithTag("SpiderTag").Length;
                 deleteAllRemainingEnemiesWithThisTag("SpiderTag");
@@ -83,6 +93,9 @@ public class GameManager : MonoBehaviour
             }
             else if (level == 3 && !isGenerated)
             {
+                // make the required number of keys 1
+                doorController.requiredKeys = 1;
+                keyBarController.locks = guardEnemiesLeft;
                 // count and delete all the wizards.
                 wizardEnemiesLeft = GameObject.FindGameObjectsWithTag("WizardTag").Length;
                 deleteAllRemainingEnemiesWithThisTag("WizardTag");
@@ -97,6 +110,9 @@ public class GameManager : MonoBehaviour
         }
         else if (stage == 2 && !isGenerated)
         {
+            // make the required number of keys 1
+            doorController.requiredKeys = 1;
+            keyBarController.locks = bossEnemiesLeft;
             // count all the guards left and delete them
             guardEnemiesLeft = GameObject.FindGameObjectsWithTag("GuardTag").Length;
             deleteAllRemainingEnemiesWithThisTag("GuardTag");
@@ -116,21 +132,47 @@ public class GameManager : MonoBehaviour
         }
         else if (stage == 3)
         {
-            if (level == 1)
+            if (level == 3 && !isGenerated)
             {
-                // Instantiate remaining Spiders.
+                // make the required number of keys equal the number of guards left
+                doorController.requiredKeys = guardEnemiesLeft;
+                keyBarController.locks = guardEnemiesLeft;
+                // Instantiate remaining Stone Giants
+                StartCoroutine(SceneTransition());
+                // Instantiate 4 Guards
+                for (int y = 0; y < guardEnemiesLeft; ++y)
+                {
+                    Instantiate(guard, new Vector3(generateRandomPointOnNavMesh(), 0, generateRandomPointOnNavMesh()), Quaternion.identity);
+                }
+                isGenerated = true;
             }
-            else if (level == 2)
+            else if (level == 2 && !isGenerated)
             {
+                // make the required number of keys equal the number of wizards left
+                doorController.requiredKeys = wizardEnemiesLeft;
+                keyBarController.locks = wizardEnemiesLeft;
                 // Instantiate remaining Wizards.
+                StartCoroutine(SceneTransition());
+                // Instantiate 4 Wizards.
+                for (int y = 0; y < wizardEnemiesLeft; ++y)
+                {
+                    Instantiate(wizard, new Vector3(generateRandomPointOnNavMesh(), 0, generateRandomPointOnNavMesh()), Quaternion.identity);
+                }
+                isGenerated = true;
             }
-            else if (level == 3)
+            else if (level == 1 && !isGenerated)
             {
-                // Instantiate remaining ...
-            }
-            else if (level == 4)
-            {
-                // Instantiate remaining ...
+                // make the required number of keys equal the number of spiders left
+                doorController.requiredKeys = spiderEnemiesLeft;
+                keyBarController.locks = spiderEnemiesLeft;
+                // Instantiate remaining Spiders.
+                StartCoroutine(SceneTransition());
+                // Instantiate 4 Spiders.
+                for (int y = 0; y < spiderEnemiesLeft; ++y)
+                {
+                    Instantiate(spider, new Vector3(generateRandomPointOnNavMesh(), 0, generateRandomPointOnNavMesh()), Quaternion.identity);
+                }
+                isGenerated = true;
             }
         }
     }

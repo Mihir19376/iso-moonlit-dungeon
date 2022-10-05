@@ -46,7 +46,7 @@ public class BossController : MonoBehaviour
         playerController = GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<PlayerController>();
         // get the animator controller from the game object that this script is attached to and set it to "spiderAnim"
         bossAnim = GetComponent<Animator>();
-        // in the same method as above ˆ retrive the NavMesh Agent and set it to "spiderNavMeshAgent"
+        // in the same method as above ? retrive the NavMesh Agent and set it to "spiderNavMeshAgent"
         bossNavMeshAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -121,6 +121,7 @@ public class BossController : MonoBehaviour
 
     IEnumerator dealPlayerDamage()
     {
+        gameManager.bossDefeated = true;
         Debug.Log("This Enemy has Died");
         bossAnim.Play("Die");
         yield return new WaitForSeconds(bossAnim.GetCurrentAnimatorStateInfo(0).length);
