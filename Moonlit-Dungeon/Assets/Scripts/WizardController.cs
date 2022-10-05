@@ -53,6 +53,7 @@ public class WizardController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        LookAt();
         // check if the health variable is equivilant or less than 0, and if so carry out the following:
         if (wizardHealth <= 0 && dead == false)
         {
@@ -134,5 +135,12 @@ public class WizardController : MonoBehaviour
         playerController.addKey();
         //gameObject.SetActive(false);
         Destroy(gameObject);
+    }
+
+    void LookAt()
+    {
+        Vector3 direction = (playerTransform.position - transform.position);
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 20);
     }
 }

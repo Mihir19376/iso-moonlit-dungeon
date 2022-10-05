@@ -174,6 +174,10 @@ public class GameManager : MonoBehaviour
                 }
                 isGenerated = true;
             }
+            else if (level == 0)
+            {
+                //win statment
+            }
         }
     }
 

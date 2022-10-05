@@ -53,6 +53,7 @@ public class GuardController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        LookAt();
         // check if the health variable is equivilant or less than 0, and if so carry out the following:
         if (guardHealth <= 0 && dead == false)
         {
@@ -65,7 +66,7 @@ public class GuardController : MonoBehaviour
             //spiderAnim.Play("Die");
             //gameObject.SetActive(false);
             StartCoroutine(dealPlayerDamage());
-            gameManager.wizardEnemiesLeft -= 1;
+            gameManager.guardEnemiesLeft -= 1;
             dead = true;
         }
         else
@@ -134,5 +135,12 @@ public class GuardController : MonoBehaviour
         playerController.addKey();
         //gameObject.SetActive(false);
         Destroy(gameObject);
+    }
+
+    void LookAt()
+    {
+        Vector3 direction = (playerTransform.position - transform.position);
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 20);
     }
 }
