@@ -10,6 +10,7 @@ TagManager:
   - WizardTag
   - GuardTag
   - BossTag
+  - TreasureChestTag
   layers:
   - Default
   - TransparentFX

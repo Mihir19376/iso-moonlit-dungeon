@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
     public GameObject transitionPanel;
     public Image panelImage;
 
+    public GameObject chest;
+
+    public GameObject winScreen;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +56,7 @@ public class GameManager : MonoBehaviour
         }
         if (bossDefeated)
         {
+            chest.SetActive(true);
             doorController.levelChanger = -1;
             stage = 3;
         }
@@ -177,6 +181,7 @@ public class GameManager : MonoBehaviour
             else if (level == 0)
             {
                 //win statment
+                winScreen.SetActive(true);
             }
         }
     }
