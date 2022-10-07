@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     public GameObject chest;
 
     public GameObject winScreen;
+
+    public bool isPlaying;
     // Start is called before the first frame update
     void Start()
     {
@@ -129,7 +131,7 @@ public class GameManager : MonoBehaviour
             // Instantiate Boss
             for (int y = 0; y < bossEnemiesLeft; ++y)
             {
-                Instantiate(boss, new Vector3(-5, 0, -5), Quaternion.identity);
+                Instantiate(boss, new Vector3(0, 0, 0), Quaternion.identity);
             }
             isGenerated = true;
 

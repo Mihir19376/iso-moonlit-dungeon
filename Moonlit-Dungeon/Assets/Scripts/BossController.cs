@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class BossController : MonoBehaviour
 {
     // This is the Health of the Spider
     // It will decrease as the player damages it
-    public int bossHealth;
+    public float bossHealth;
     // This is a reference to the NavMesh Agent component attachted to the object attached to this script 
     // I pass instructions of where to head to this component and it uses them to move the GameObject to there.
     NavMeshAgent bossNavMeshAgent;
@@ -32,6 +33,9 @@ public class BossController : MonoBehaviour
 
     GameManager gameManager;
 
+    public Image fillImage;
+    public Slider slider;
+
     // Start is called before the first frame update
     // Anything set here is set once at the start of the game
     void Start()
@@ -53,6 +57,7 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        HandleHealthBar();
         LookAt();
         // check if the health variable is equivilant or less than 0, and if so carry out the following:
         if (bossHealth <= 0 && dead == false)
@@ -65,7 +70,7 @@ public class BossController : MonoBehaviour
         else
         {
             distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            if (distanceToPlayer <= 5)
+            if (distanceToPlayer <= 8)
             {
                 bossNavMeshAgent.isStopped = false;
                 idle = false;
@@ -85,7 +90,10 @@ public class BossController : MonoBehaviour
                 {
                     if (!bossNavMeshAgent.hasPath || bossNavMeshAgent.velocity.sqrMagnitude == 0f)
                     {
-                        StartCoroutine(Attack());
+                        if (gameManager.isPlaying)
+                        {
+                            StartCoroutine(Attack());
+                        }
                         //Attack();
                     }
                 }
@@ -136,5 +144,24 @@ public class BossController : MonoBehaviour
         Vector3 direction = (playerTransform.position - transform.position);
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 20);
+    }
+
+    void HandleHealthBar()
+    {
+        if (slider.value <= slider.minValue)
+        {
+            fillImage.enabled = false;
+        }
+        if (slider.value > slider.minValue && !fillImage.enabled)
+        {
+            fillImage.enabled = true;
+        }
+
+        float fillValue = bossHealth / 50f;
+        Debug.Log(fillValue);
+        slider.value = fillValue;
+
+        slider.transform.LookAt(Camera.main.transform);
+        slider.transform.Rotate(0, 180, 0);
     }
 }

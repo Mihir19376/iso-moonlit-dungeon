@@ -92,7 +92,11 @@ public class GuardController : MonoBehaviour
                 {
                     if (!guardNavMeshAgent.hasPath || guardNavMeshAgent.velocity.sqrMagnitude == 0f)
                     {
-                        StartCoroutine(Attack());
+                        if (gameManager.isPlaying)
+                        {
+                            StartCoroutine(Attack());
+                        }
+                        
                         //Attack();
                     }
                 }

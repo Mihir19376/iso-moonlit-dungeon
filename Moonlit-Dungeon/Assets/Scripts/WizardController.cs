@@ -92,7 +92,10 @@ public class WizardController : MonoBehaviour
                 {
                     if (!wizardNavMeshAgent.hasPath || wizardNavMeshAgent.velocity.sqrMagnitude == 0f)
                     {
-                        StartCoroutine(Attack());
+                        if (gameManager.isPlaying)
+                        {
+                            StartCoroutine(Attack());
+                        }
                         //Attack();
                     }
                 }

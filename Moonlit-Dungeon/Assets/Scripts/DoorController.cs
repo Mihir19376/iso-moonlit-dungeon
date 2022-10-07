@@ -8,6 +8,7 @@ public class DoorController : MonoBehaviour
     // a reference to the Game Object of the player that is in the scene
     public GameObject player;
     PlayerController playerController;
+    CharacterController characterController;
     GameManager gameManager;
 
     public int levelChanger;
@@ -24,6 +25,7 @@ public class DoorController : MonoBehaviour
         gameManager = GameObject.FindGameObjectWithTag("GameManagerTag").GetComponent<GameManager>();
         player = GameObject.FindGameObjectWithTag("PlayerTag");
         playerController = GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<PlayerController>();
+        characterController = GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<CharacterController>();
     }
 
     void Update()
@@ -58,6 +60,9 @@ public class DoorController : MonoBehaviour
             playerController.keysCollected = 0;
             gameManager.level += levelChanger;
             gameManager.isGenerated = false;
+            characterController.enabled = false;
+            playerController.transform.position = new Vector3(-6, 0, -6);
+            characterController.enabled = true;
         }
     }
 }

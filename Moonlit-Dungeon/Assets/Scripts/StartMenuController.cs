@@ -8,13 +8,16 @@ public class StartMenuController : MonoBehaviour
     public GameObject startMenu;
     public GameObject gameUI;
     public GameObject instructionsMenu;
+    public GameManager gameManager;
 
     void Start()
     {
+        gameManager.isPlaying = false;
         Time.timeScale = 0f;
     }
     public void PlayGame()
     {
+        gameManager.isPlaying = true;
         Time.timeScale = 1f;
         startMenu.SetActive(false);
         gameUI.SetActive(true);

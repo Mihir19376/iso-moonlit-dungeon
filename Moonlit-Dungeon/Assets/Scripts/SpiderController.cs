@@ -92,7 +92,10 @@ public class SpiderController : MonoBehaviour
                 {
                     if (!spiderNavMeshAgent.hasPath || spiderNavMeshAgent.velocity.sqrMagnitude == 0f)
                     {
-                        StartCoroutine(Attack());
+                        if (gameManager.isPlaying)
+                        {
+                            StartCoroutine(Attack());
+                        }
                         //Attack();
                     }
                 }
