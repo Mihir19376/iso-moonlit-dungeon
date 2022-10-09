@@ -9952,7 +9952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcead61287f6f45318a25e2ac02aede5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMaxHealth: 2000
+  playerMaxHealth: 150
   playerHealth: 0
   keysCollected: 0
   hasTreasure: 0

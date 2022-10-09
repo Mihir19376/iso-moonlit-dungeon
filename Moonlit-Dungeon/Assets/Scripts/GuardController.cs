@@ -35,6 +35,8 @@ public class GuardController : MonoBehaviour
     public GameObject rock;
     public float rockSpeed = 10;
 
+    private bool canAttack;
+
     // Start is called before the first frame update
     // Anything set here is set once at the start of the game
     void Start()
@@ -51,6 +53,7 @@ public class GuardController : MonoBehaviour
         guardAnim = GetComponent<Animator>();
         // in the same method as above ˆ retrive the NavMesh Agent and set it to "spiderNavMeshAgent"
         guardNavMeshAgent = GetComponent<NavMeshAgent>();
+        canAttack = true;
     }
 
     // Update is called once per frame
@@ -98,7 +101,11 @@ public class GuardController : MonoBehaviour
                     {
                         if (gameManager.isPlaying)
                         {
-                            StartCoroutine(Attack());
+                            if (canAttack)
+                            {
+                                StartCoroutine(Attack());
+                            }
+                            
                         }
                         
                         //Attack();
@@ -126,7 +133,9 @@ public class GuardController : MonoBehaviour
     IEnumerator Attack()
     {
         guardAnim.SetTrigger("Attack");
+        canAttack = false;
         yield return new WaitForSeconds(0.5f);
+        canAttack = true;
         playerController.playerHealth -= 1;
     }
 

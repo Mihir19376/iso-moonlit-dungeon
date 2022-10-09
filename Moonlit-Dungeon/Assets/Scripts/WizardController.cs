@@ -34,6 +34,8 @@ public class WizardController : MonoBehaviour
 
     public AudioSource wizardAudioSource;
 
+    private bool canAttack;
+
     // Start is called before the first frame update
     // Anything set here is set once at the start of the game
     void Start()
@@ -50,6 +52,7 @@ public class WizardController : MonoBehaviour
         wizardAnim = GetComponent<Animator>();
         // in the same method as above ˆ retrive the NavMesh Agent and set it to "spiderNavMeshAgent"
         wizardNavMeshAgent = GetComponent<NavMeshAgent>();
+        canAttack = true;
     }
 
     // Update is called once per frame
@@ -97,7 +100,11 @@ public class WizardController : MonoBehaviour
                     {
                         if (gameManager.isPlaying)
                         {
-                            StartCoroutine(Attack());
+                            if (canAttack)
+                            {
+                                StartCoroutine(Attack());
+                            }
+                            
                         }
                         //Attack();
                     }
@@ -124,7 +131,9 @@ public class WizardController : MonoBehaviour
     IEnumerator Attack()
     {
         wizardAnim.SetTrigger("Attack");
+        canAttack = false;
         yield return new WaitForSeconds(0.5f);
+        canAttack = true;
         playerController.playerHealth -= 1;
     }
 

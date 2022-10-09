@@ -36,6 +36,8 @@ public class BossController : MonoBehaviour
     public Image fillImage;
     public Slider slider;
 
+    private bool canAttack;
+
     // Start is called before the first frame update
     // Anything set here is set once at the start of the game
     void Start()
@@ -52,6 +54,7 @@ public class BossController : MonoBehaviour
         bossAnim = GetComponent<Animator>();
         // in the same method as above ? retrive the NavMesh Agent and set it to "spiderNavMeshAgent"
         bossNavMeshAgent = GetComponent<NavMeshAgent>();
+        canAttack = true;
     }
 
     // Update is called once per frame
@@ -92,7 +95,11 @@ public class BossController : MonoBehaviour
                     {
                         if (gameManager.isPlaying)
                         {
-                            StartCoroutine(Attack());
+                            if (canAttack)
+                            {
+                                StartCoroutine(Attack());
+                            }
+                            
                         }
                         //Attack();
                     }
@@ -119,7 +126,9 @@ public class BossController : MonoBehaviour
     IEnumerator Attack()
     {
         bossAnim.SetTrigger("Attack");
+        canAttack = false;
         yield return new WaitForSeconds(0.5f);
+        canAttack = true;
         playerController.playerHealth -= 1;
     }
 
