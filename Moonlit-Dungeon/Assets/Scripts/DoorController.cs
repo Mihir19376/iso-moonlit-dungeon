@@ -17,6 +17,9 @@ public class DoorController : MonoBehaviour
     public GameObject doorClosedImage;
 
     public int requiredKeys;
+
+    public AudioSource doorSound;
+    public AudioSource winSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +59,7 @@ public class DoorController : MonoBehaviour
     {
         if (playerController.keysCollected >= requiredKeys)
         {
+            doorSound.Play();
             Debug.Log("Next Level!");
             playerController.keysCollected = 0;
             gameManager.level += levelChanger;
@@ -63,6 +67,10 @@ public class DoorController : MonoBehaviour
             characterController.enabled = false;
             playerController.transform.position = new Vector3(-6, 0, -6);
             characterController.enabled = true;
+        }
+        if (gameManager.level == 0)
+        {
+            winSound.Play();
         }
     }
 }

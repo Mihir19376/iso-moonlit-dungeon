@@ -32,6 +32,9 @@ public class GuardController : MonoBehaviour
 
     GameManager gameManager;
 
+    public GameObject rock;
+    public float rockSpeed = 10;
+
     // Start is called before the first frame update
     // Anything set here is set once at the start of the game
     void Start()
@@ -53,6 +56,7 @@ public class GuardController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        StartCoroutine(Throw());
         LookAt();
         // check if the health variable is equivilant or less than 0, and if so carry out the following:
         if (guardHealth <= 0 && dead == false)
@@ -146,5 +150,17 @@ public class GuardController : MonoBehaviour
         Vector3 direction = (playerTransform.position - transform.position);
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 20);
+    }
+
+    IEnumerator Throw()
+    {
+        if (Random.Range(0, 3000) == 5 && guardNavMeshAgent.isStopped == true)
+        {
+            guardAnim.SetTrigger("Throw");
+            yield return new WaitForSeconds(guardAnim.GetCurrentAnimatorStateInfo(0).length);
+            var bullet = Instantiate(rock, transform.position, transform.rotation);
+            bullet.GetComponent<Rigidbody>().velocity = transform.forward * rockSpeed;
+            // instantaite a prefab to throw 
+        }
     }
 }

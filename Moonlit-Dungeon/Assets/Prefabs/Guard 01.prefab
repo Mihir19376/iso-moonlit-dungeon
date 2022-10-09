@@ -117,6 +117,8 @@ MonoBehaviour:
   guardHealth: 0
   playerTransform: {fileID: 0}
   player: {fileID: 0}
+  rock: {fileID: 8020787486932200437, guid: e7e8c1092e6f84303b3b19a1b4e2800e, type: 3}
+  rockSpeed: 10
 --- !u!195 &8571502829039571835
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     public GameObject winScreen;
 
     public bool isPlaying;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -205,6 +206,8 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator SceneTransition()
     {
+        // yes, I know this look odd. Buts its here just so that I don't have
+        // to create an entriely new fucntion for this obscure peice of code.
         if (true)
         {
             // incrase the alpha

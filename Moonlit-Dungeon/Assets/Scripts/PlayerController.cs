@@ -27,9 +27,15 @@ public class PlayerController : MonoBehaviour
     GuardController guardController;
     BossController bossController;
 
+    public AudioSource attackSound;
+
+    GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        attacking = false;
+        gameManager = GameObject.FindGameObjectWithTag("GameManagerTag").GetComponent<GameManager>();
         hasTreasure = false;
         keysCollected = 0;
         attacking = false;
@@ -51,10 +57,14 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(fallVector * Time.deltaTime);
 
-        Move();
-        Rotatee();
+        if (gameManager.isPlaying)
+        {
+            Move();
+            Rotatee();
+        }
+        
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && gameManager.isPlaying && !attacking)
         {
             //Attack();
             StartCoroutine(Attack());
@@ -132,7 +142,9 @@ public class PlayerController : MonoBehaviour
     {
         attacking = true;
         anim.SetTrigger("Attack");
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        RandomiseSound();
+        attackSound.Play();
+        yield return new WaitForSeconds(1);
         attacking = false;
     }
 
@@ -163,8 +175,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "RockTag")
+        {
+
+            playerHealth -= 1;
+        }
+    }
+
     public void addKey()
     {
         keysCollected++;
+    }
+    void RandomiseSound()
+    {
+        attackSound.pitch = Random.Range(0.75f, 1.25f);
+        attackSound.volume = Random.Range(0.75f, 1f);
     }
 }

@@ -32,6 +32,8 @@ public class WizardController : MonoBehaviour
 
     GameManager gameManager;
 
+    public AudioSource wizardAudioSource;
+
     // Start is called before the first frame update
     // Anything set here is set once at the start of the game
     void Start()
@@ -53,6 +55,7 @@ public class WizardController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        StartCoroutine(RandomMove());
         LookAt();
         // check if the health variable is equivilant or less than 0, and if so carry out the following:
         if (wizardHealth <= 0 && dead == false)
@@ -145,5 +148,17 @@ public class WizardController : MonoBehaviour
         Vector3 direction = (playerTransform.position - transform.position);
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 20);
+    }
+
+
+    IEnumerator RandomMove()
+    {
+        if (Random.Range(0, 3000) == 5 && wizardNavMeshAgent.isStopped == true)
+        {
+            wizardAudioSource.Play();
+            transform.position = new Vector3(gameManager.generateRandomPointOnNavMesh(), 0, gameManager.generateRandomPointOnNavMesh());
+        }
+
+        yield return new WaitForSeconds(1);
     }
 }
