@@ -153,7 +153,7 @@ public class WizardController : MonoBehaviour
 
     IEnumerator RandomMove()
     {
-        if (Random.Range(0, 3000) == 5 && wizardNavMeshAgent.isStopped == true)
+        if (Random.Range(0, 1500) == 5 && wizardNavMeshAgent.isStopped == true)
         {
             wizardAudioSource.Play();
             transform.position = new Vector3(gameManager.generateRandomPointOnNavMesh(), 0, gameManager.generateRandomPointOnNavMesh());

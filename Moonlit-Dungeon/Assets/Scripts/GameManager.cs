@@ -139,8 +139,13 @@ public class GameManager : MonoBehaviour
         }
         else if (stage == 3)
         {
+            
             if (level == 3 && !isGenerated)
             {
+                for (int i = 0; i < pillars.Length; i++)
+                {
+                    pillars[i].SetActive(true);
+                }
                 // make the required number of keys equal the number of guards left
                 doorController.requiredKeys = guardEnemiesLeft;
                 keyBarController.locks = guardEnemiesLeft;

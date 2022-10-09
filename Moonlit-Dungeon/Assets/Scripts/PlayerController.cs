@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     private bool attacking;
-    public float playerMaxHealth = 2000;
+    public float playerMaxHealth = 10000;
     public float playerHealth;
     public int keysCollected;
     public bool hasTreasure;

@@ -154,7 +154,7 @@ public class GuardController : MonoBehaviour
 
     IEnumerator Throw()
     {
-        if (Random.Range(0, 3000) == 5 && guardNavMeshAgent.isStopped == true)
+        if (Random.Range(0, 1500) == 5 && guardNavMeshAgent.isStopped == true)
         {
             guardAnim.SetTrigger("Throw");
             yield return new WaitForSeconds(guardAnim.GetCurrentAnimatorStateInfo(0).length);
