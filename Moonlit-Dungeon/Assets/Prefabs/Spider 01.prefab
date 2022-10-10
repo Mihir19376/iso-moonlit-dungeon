@@ -1524,6 +1524,8 @@ MonoBehaviour:
   spiderHealth: 0
   playerTransform: {fileID: 0}
   player: {fileID: 0}
+  blackExplosionFX: {fileID: 5373973095308376377, guid: 139db46c7790f421185098bb639adadb, type: 3}
+  flameThrowerFX: {fileID: 182542, guid: 5cd5599e01f32bd418f20a3b9eac1c57, type: 3}
 --- !u!1 &2728345224600230935
 GameObject:
   m_ObjectHideFlags: 0

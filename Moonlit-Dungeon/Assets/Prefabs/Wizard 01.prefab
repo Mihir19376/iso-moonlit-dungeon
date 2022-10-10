@@ -887,6 +887,8 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   player: {fileID: 0}
   wizardAudioSource: {fileID: -8348053859032881348}
+  purpleExplosionFX: {fileID: 728945282330618921, guid: fe5907530449742769c97772ba4dd714, type: 3}
+  teleportFX: {fileID: 100000, guid: ab1112643ee572748b01dede71158272, type: 3}
 --- !u!82 &-8348053859032881348
 AudioSource:
   m_ObjectHideFlags: 0

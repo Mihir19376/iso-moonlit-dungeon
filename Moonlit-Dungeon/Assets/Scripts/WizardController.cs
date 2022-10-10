@@ -36,6 +36,10 @@ public class WizardController : MonoBehaviour
 
     private bool canAttack;
 
+    public GameObject purpleExplosionFX;
+
+    public GameObject teleportFX;
+
     // Start is called before the first frame update
     // Anything set here is set once at the start of the game
     void Start()
@@ -148,6 +152,7 @@ public class WizardController : MonoBehaviour
         wizardAnim.Play("Die");
         yield return new WaitForSeconds(wizardAnim.GetCurrentAnimatorStateInfo(0).length);
         playerController.addKey();
+        Instantiate(purpleExplosionFX, transform.position, Quaternion.identity);
         //gameObject.SetActive(false);
         Destroy(gameObject);
     }
@@ -164,6 +169,7 @@ public class WizardController : MonoBehaviour
     {
         if (Random.Range(0, 1500) == 5 && wizardNavMeshAgent.isStopped == true)
         {
+            Instantiate(teleportFX, transform.position, Quaternion.identity);
             wizardAudioSource.Play();
             transform.position = new Vector3(gameManager.generateRandomPointOnNavMesh(), 0, gameManager.generateRandomPointOnNavMesh());
         }

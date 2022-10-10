@@ -37,6 +37,8 @@ public class GuardController : MonoBehaviour
 
     private bool canAttack;
 
+    public GameObject greenExplosionFX;
+
     // Start is called before the first frame update
     // Anything set here is set once at the start of the game
     void Start()
@@ -150,6 +152,7 @@ public class GuardController : MonoBehaviour
         guardAnim.Play("Die");
         yield return new WaitForSeconds(guardAnim.GetCurrentAnimatorStateInfo(0).length);
         playerController.addKey();
+        Instantiate(greenExplosionFX, transform.position, Quaternion.identity);
         //gameObject.SetActive(false);
         Destroy(gameObject);
     }

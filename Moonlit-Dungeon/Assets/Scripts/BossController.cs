@@ -38,6 +38,11 @@ public class BossController : MonoBehaviour
 
     private bool canAttack;
 
+    public GameObject fireExplosionFX;
+    public GameObject floorFireFX;
+
+    public AudioSource fireSound;
+
     // Start is called before the first frame update
     // Anything set here is set once at the start of the game
     void Start()
@@ -60,6 +65,7 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RandomFireOnTheFloor();
         HandleHealthBar();
         LookAt();
         // check if the health variable is equivilant or less than 0, and if so carry out the following:
@@ -144,6 +150,7 @@ public class BossController : MonoBehaviour
         bossAnim.Play("Die");
         yield return new WaitForSeconds(bossAnim.GetCurrentAnimatorStateInfo(0).length);
         playerController.addKey();
+        Instantiate(fireExplosionFX, transform.position, Quaternion.identity);
         //gameObject.SetActive(false);
         Destroy(gameObject);
     }
@@ -172,5 +179,15 @@ public class BossController : MonoBehaviour
 
         slider.transform.LookAt(Camera.main.transform);
         slider.transform.Rotate(0, 180, 0);
+    }
+
+    void RandomFireOnTheFloor()
+    {
+        if (Random.Range(0, 100) == 5)
+        {
+            Vector3 firePos = new Vector3(gameManager.generateRandomPointOnNavMesh(), 0, gameManager.generateRandomPointOnNavMesh());
+            Instantiate(floorFireFX, firePos, Quaternion.identity);
+            fireSound.Play();
+        }
     }
 }

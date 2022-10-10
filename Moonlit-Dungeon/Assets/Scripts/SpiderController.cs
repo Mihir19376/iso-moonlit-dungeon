@@ -34,6 +34,8 @@ public class SpiderController : MonoBehaviour
 
     private bool canAttack;
 
+    public GameObject blackExplosionFX;
+
     // Start is called before the first frame update
     // Anything set here is set once at the start of the game
     void Start()
@@ -145,6 +147,7 @@ public class SpiderController : MonoBehaviour
         spiderAnim.Play("Die");
         yield return new WaitForSeconds(spiderAnim.GetCurrentAnimatorStateInfo(0).length);
         playerController.addKey();
+        Instantiate(blackExplosionFX, transform.position, Quaternion.identity);
         //gameObject.SetActive(false);
         Destroy(gameObject);
     }

@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour
 
     GameManager gameManager;
 
+    public GameObject loseScreen;
+    public AudioSource loseSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,9 +73,9 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Attack());
         }
 
-        if (playerHealth <= 0)
+        if (playerHealth <= 0 && gameManager.isPlaying)
         {
-            // Debug.Log("Dead");
+            StartCoroutine(LoseGame());
         }
         
     }
@@ -179,7 +182,6 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "RockTag")
         {
-
             playerHealth -= 1;
         }
     }
@@ -192,5 +194,16 @@ public class PlayerController : MonoBehaviour
     {
         attackSound.pitch = Random.Range(0.75f, 1.25f);
         attackSound.volume = Random.Range(0.75f, 1f);
+    }
+
+
+    IEnumerator LoseGame()
+    {
+        anim.Play("Die");
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        loseSound.Play();
+        loseScreen.SetActive(true);
+        gameManager.isPlaying = false;
+        Time.timeScale = 0f;
     }
 }
