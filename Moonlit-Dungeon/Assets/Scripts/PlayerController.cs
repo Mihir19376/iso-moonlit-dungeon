@@ -182,7 +182,11 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "RockTag")
         {
-            playerHealth -= 1;
+            playerHealth -= 10;
+        }
+        if (other.gameObject.tag == "FloorFireTag")
+        {
+            playerHealth -= 10;
         }
     }
 

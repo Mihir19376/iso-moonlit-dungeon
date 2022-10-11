@@ -13,7 +13,14 @@ public class RockScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (transform.position.z <= -7 || transform.position.z >= 7)
+        {
+            Destroy(gameObject);
+        }
+        if (transform.position.x <= -7 || transform.position.x >= 7)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

@@ -12,6 +12,7 @@ TagManager:
   - BossTag
   - TreasureChestTag
   - RockTag
+  - FloorFireTag
   layers:
   - Default
   - TransparentFX
