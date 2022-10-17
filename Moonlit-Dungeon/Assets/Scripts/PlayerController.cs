@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     GameManager gameManager;
 
     public GameObject loseScreen;
+
     public AudioSource loseSound;
 
     // Start is called before the first frame update

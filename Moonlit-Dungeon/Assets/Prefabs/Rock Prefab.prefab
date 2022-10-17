@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04563cea4f1264e15a3ee43931547922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  greyExplosionFX: {fileID: 6733168376149039189, guid: 1ccef95fa44b54ed98688940393339d7, type: 3}
 --- !u!135 &2582119380637818114
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -173,7 +174,7 @@ TrailRenderer:
   m_Time: 0.3
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.7
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
