@@ -170,7 +170,8 @@ public class GuardController : MonoBehaviour
         {
             guardAnim.SetTrigger("Throw");
             yield return new WaitForSeconds(guardAnim.GetCurrentAnimatorStateInfo(0).length);
-            var bullet = Instantiate(rock, transform.position, transform.rotation);
+            Vector3 rockPos = new Vector3(transform.position.x, 1, transform.position.z);
+            var bullet = Instantiate(rock, rockPos, transform.rotation);
             bullet.GetComponent<Rigidbody>().velocity = transform.forward * rockSpeed;
             // instantaite a prefab to throw 
         }

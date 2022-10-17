@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
     public AudioSource loseSound;
 
+    public AudioSource hitByRockSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -183,6 +185,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "RockTag")
         {
+            hitByRockSound.Play();
             playerHealth -= 10;
         }
         if (other.gameObject.tag == "FloorFireTag")
