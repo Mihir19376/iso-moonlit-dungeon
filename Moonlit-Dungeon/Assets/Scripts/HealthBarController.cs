@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// this script controls the player health bar and all the attributes associated to it
+/// </summary>
 public class HealthBarController : MonoBehaviour
 {
     // get a script variable reference to the playercontroller

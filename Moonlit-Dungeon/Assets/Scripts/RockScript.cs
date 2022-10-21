@@ -2,18 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// this script controls the rock the guard throws and all the attributes associated to it
+/// </summary>
 public class RockScript : MonoBehaviour
 {
     // this is the furthest distance that the rock can go before getting destroyed
     private int destoryPosition = 7;
     // a grey explosion prefab to be instantiate when this rock hits the player
     public GameObject greyExplosionFX;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

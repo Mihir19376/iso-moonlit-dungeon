@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+/// <summary>
+/// this script controls the spider enemy and all the attributes associated to it
+/// </summary>
 public class SpiderController : MonoBehaviour
 {
     // This is the Health of the Spider

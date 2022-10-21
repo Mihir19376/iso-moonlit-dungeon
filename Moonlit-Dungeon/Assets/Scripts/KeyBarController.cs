@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// this script controls the key/locks bar and all the attributes associated to it
+/// </summary>
 public class KeyBarController : MonoBehaviour
 {
     // get a script variable reference to the playercontroller
     PlayerController playerController;
 
+    // the number of keys gathered
     public int keys;
+    // and the number of locks to unlock
     public int locks;
     // a list of empty RawImages
     public RawImage[] keysAndLocks;

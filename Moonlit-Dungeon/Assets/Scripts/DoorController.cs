@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// this script controls the door and all the attributes associated to it
+/// </summary>
 public class DoorController : MonoBehaviour
 {
     // a reference to the Game Object of the player that is in the scene

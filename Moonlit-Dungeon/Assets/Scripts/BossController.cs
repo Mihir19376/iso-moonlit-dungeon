@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
-
+/// <summary>
+/// this script controls the boss enemy and all the attributes associated to it
+/// </summary>
 public class BossController : MonoBehaviour
 {
     // This is the Health of the Boss

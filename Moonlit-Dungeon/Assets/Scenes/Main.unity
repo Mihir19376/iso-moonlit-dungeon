@@ -3373,8 +3373,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ...What a disapoinment. You have failed to comlete the simple task of retrieving
-    me a treasure. Begone.
+  m_text: ...What a disapoinment. You have failed to complete the simple task of
+    retrieving me a treasure. Begone.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d2e154978ed5e1e4c9bd902ed59cf006, type: 2}
   m_sharedMaterial: {fileID: -2998426180738139298, guid: d2e154978ed5e1e4c9bd902ed59cf006, type: 2}
@@ -5882,7 +5882,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You have done it! You have achaived what I set you out to do. You are
+  m_text: 'You have done it! You have achieved what I set you out to do. You are
     dismissed.
 
 '

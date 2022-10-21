@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// this script controls the game maneger which means to over see all the major
+/// fucntions of the game such as spwaning and logic
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     // a reference to the door controller script

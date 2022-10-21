@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// this script controls the start menu and all the attributes associated to it (such as button, etc.)
+/// </summary>
 public class StartMenuController : MonoBehaviour
 {
     // a referenc to the startMenu canvas game object (this reference can be

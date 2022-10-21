@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// this script controls the wizard enemy and all the attributes associated to it
+/// </summary>
 public class WizardController : MonoBehaviour
 {
     // This is the Health of the Wizard

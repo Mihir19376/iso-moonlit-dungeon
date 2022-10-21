@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+/// <summary>
+/// this script controls the player and all the attributes associated to it
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
     // this states if the player can attack or not.
@@ -212,7 +214,7 @@ public class PlayerController : MonoBehaviour
         // trigger the attak animation
         anim.SetTrigger("Attack");
         // randomise the sound of the player attack sound
-        RandomiseSound();
+        RandomiseAttackSound();
         // play the audio source which has the attacksound on it
         attackSound.Play();
         // pause for 1 second so that the player cant attack continously
@@ -290,20 +292,36 @@ public class PlayerController : MonoBehaviour
         // inscrease the keysCollected hence signaling the player has one more key
         keysCollected++;
     }
-    void RandomiseSound()
+
+    /// <summary>
+    /// This void is used to randomise the pitch and volume of the player attack sound
+    /// </summary>
+    void RandomiseAttackSound()
     {
+        // set the pitch of the attack sound audiosource to between .75 and 1.25
         attackSound.pitch = Random.Range(0.75f, 1.25f);
+        // set the volume of the attack sound audiosource to between .75 and 1
         attackSound.volume = Random.Range(0.75f, 1f);
     }
 
-
+    /// <summary>
+    /// This is the Lose Game fucntion called when the player runs fully out of health
+    /// </summary>
+    /// <returns>nothing</returns>
     IEnumerator LoseGame()
     {
+        // Play the Die animation
         anim.Play("Die");
+        // wait for the first animtion playing in the animator (i.e. the death animation) to finich playing
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        // Play the lose sound audiosource
         loseSound.Play();
+        // set the lose menu screen active to make it appear on the screen
         loseScreen.SetActive(true);
+        // set the isPlaying variable in the gamemanger script to false to signal
+        // that the game is not active and so the input can be stopped
         gameManager.isPlaying = false;
+        // set the timescale of the time to 0 to stop any action that require a chaneg in time (such as animtions)
         Time.timeScale = 0f;
     }
 }

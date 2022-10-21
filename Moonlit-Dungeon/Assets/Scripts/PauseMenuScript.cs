@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// this script controls the pause menu and all the attributes associated to it
+/// </summary>
 public class PauseMenuScript : MonoBehaviour
 {
     // get a reference to the gameUI gameobject canvas in the hierarchy
