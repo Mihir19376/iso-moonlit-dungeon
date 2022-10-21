@@ -40,9 +40,9 @@ public class HealthBarController : MonoBehaviour
             fillImage.enabled = true;
         }
 
-        // create a float variable called fillvalue and set it equal to the
-        // player health variabel on the playerocntroller script divided by the
-        // max health float on the player controller
+        /* create a float variable called fillvalue and set it equal to the
+           player health variabel on the playerocntroller script divided by the
+           max health float on the player controller */
         float fillValue = playerController.playerHealth/playerController.playerMaxHealth;
         // print out this float value in the log
         Debug.Log(fillValue);

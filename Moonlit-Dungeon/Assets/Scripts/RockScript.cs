@@ -32,9 +32,9 @@ public class RockScript : MonoBehaviour
         }
     }
 
-    // this function will only play when this objects boxcollider gets triggered
-    // (when it touches something) and stores the information of the collider it
-    // touched in a vaariable called other
+    /* this function will only play when this objects boxcollider gets triggered
+       (when it touches something) and stores the information of the collider it
+       touched in a vaariable called other */
     private void OnTriggerEnter(Collider other)
     {
         // if the variables' gameObjects tag is "PlayerTag" then destroy this
@@ -43,6 +43,7 @@ public class RockScript : MonoBehaviour
         {
             // make a grey explosion on the area of hit
             Instantiate(greyExplosionFX, transform.position, Quaternion.identity);
+            // then destroy itself 
             Destroy(gameObject);
         }
     }

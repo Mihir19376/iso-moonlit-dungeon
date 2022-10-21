@@ -85,10 +85,10 @@ public class DoorController : MonoBehaviour
     /// </summary>
     public void checkIfPlayerHasEnoughKeys()
     {
-        // if the number of keys (which is referenced by the keys collected
-        // variable in the player controller script) is above or equal the
-        // required number of keys then sewitch to the next level by carriying
-        // out the follwoing procedures
+        /* if the number of keys (which is referenced by the keys collected
+           variable in the player controller script) is above or equal the
+           required number of keys then sewitch to the next level by carriying
+           out the follwoing procedures */
         if (playerController.keysCollected >= requiredKeys)
         {
             doorSound.Play(); // play the door sound

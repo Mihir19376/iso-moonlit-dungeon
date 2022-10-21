@@ -31,13 +31,13 @@ public class GameManager : MonoBehaviour
     public int stage;
     // boolean telling the script if the required enemies has been spawned
     public bool isGenerated = false;
-    // a boolean telling us if the boss has been defeated so we can make the
-    // apporpriate changes to the game (i.e. the treause chest icon appearing,
-    // changing the stage)
+    /* a boolean telling us if the boss has been defeated so we can make the
+       apporpriate changes to the game (i.e. the treause chest icon appearing,
+       changing the stage) */
     public bool bossDefeated;
-    // a reference to all the pillars in the scene. Just so I can deactivate and
-    // activate them during and after the boss level. And yes, deactivating
-    // them does re-calc the nav mesh
+    /* a reference to all the pillars in the scene. Just so I can deactivate and
+       activate them during and after the boss level. And yes, deactivating
+       them does re-calc the nav mesh */
     public GameObject[] pillars;
     // the black panel that pops in and fades out when the level changes
     public GameObject transitionPanel;
@@ -48,9 +48,9 @@ public class GameManager : MonoBehaviour
     public GameObject chest;
     // a reference to the win screen canvas which appears when the player wins
     public GameObject winScreen;
-    // a public boolean that states if the gaem is being played. If this is set
-    // to false, then one of the menus must be up. this is cheked before any
-    // input in the game so the player cant attack while in a menu
+    /* a public boolean that states if the gaem is being played. If this is set
+       to false, then one of the menus must be up. this is cheked before any
+       input in the game so the player cant attack while in a menu */
     public bool isPlaying;
 
     // the range in which the enemies are spawned on the floor
@@ -121,9 +121,9 @@ public class GameManager : MonoBehaviour
                     // instantaite them at a random position on the arena
                     Instantiate(spider, new Vector3(generateRandomPointOnNavMesh(), 0, generateRandomPointOnNavMesh()), Quaternion.identity);
                 }
-                // set is egenrated to true so that these enemies wont generate
-                // again until it is set to false (which is again set to false
-                // once the player advances to the next level)
+                /* set is egenrated to true so that these enemies wont generate
+                   again until it is set to false (which is again set to false
+                   once the player advances to the next level) */
                 isGenerated = true;
             }
             else if (level == 2 && !isGenerated)
@@ -346,14 +346,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// set only the spider icon to appear and other icon to not
+    /// </summary>
     void SpiderIconAppear()
     {
-        spiderIcon.SetActive(true);
-        guardIcon.SetActive(false);
+        spiderIcon.SetActive(true); // switch this on in the heirachy
+        guardIcon.SetActive(false); // switch this off in the heirachy
         wizardIcon.SetActive(false);
         bossIcon.SetActive(false);
     }
 
+    /// <summary>
+    /// set only the wizard icon to appear and other icon to not
+    /// </summary>
     void WizardIconAppear()
     {
         spiderIcon.SetActive(false);
@@ -362,6 +368,9 @@ public class GameManager : MonoBehaviour
         bossIcon.SetActive(false);
     }
 
+    /// <summary>
+    /// set only the guard icon to appear and other icon to not
+    /// </summary>
     void GuardIconAppear()
     {
         spiderIcon.SetActive(false);
@@ -370,6 +379,9 @@ public class GameManager : MonoBehaviour
         bossIcon.SetActive(false);
     }
 
+    /// <summary>
+    /// set only the boss icon to appear and other icon to not
+    /// </summary>
     void BossIconAppear()
     {
         spiderIcon.SetActive(false);
